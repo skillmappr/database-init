@@ -1,0 +1,29 @@
+id;nome;descricao
+1;C.1.1;Aplicar os conceitos de programação imperativa e dominar o uso de abstrações de controle e dados, analisando o problema em questão para determinar tradeoffs de memória e processamento ao aplicar diferentes estruturas de controle e de dados
+2;C.1.2;Dominar noções básicas de teoria da computação, como lógica básica, complexidade de algoritmos, e linguagens formais e autômatos
+3;C.1.3;Elaborar sistemas considerando o mapeamento de programas para arquiteturas de computadores convencionais: representação de código e de dados, entrada e saída, geração de programas e sua execução. Analisar programas e avaliar o custo de aplicação de diferentes construções
+4;C.1.4;Criticar e escolher sistemas operacionais para contextos específicos, considerando como funcionam os principais componentes de cada sistema e os requisitos do contexto de aplicação
+5;C.1.5;Avaliar o desempenho de sistemas computacionais usando técnicas teóricas e práticas de forma complementar
+6;C.1.6;Dominar o ferramental matemático básico, da Engenharia compreendendo noções de cálculo e mapeá-lo para técnicas de cálculo numérico e métodos de matemática aplicada
+7;C.1.7;Dominar conceitos de probabilidade e estatística e aplicá-los em diferentes contextos, como análise de desempenho ou estudo de capacidade
+8;C.1.8;Aplicar conceitos de matemática, como indução, combinatória e teoria de grafos, em diferentes situações e problemas
+9;C.1.9;Dominar conceitos básicos da física relacionados a eletricidade e magnetismo e transmissão de ondas
+10;C.1.10;Analisar e projetar circuitos eletrônicos simples, entendendo requisitos e tradeoffs. Avaliar circuitos digitais usados em sistemas computacionais. Analisar os efeitos de características e estilos de projeto sobre temporização, desempenho e energia
+11;C.1.11;Aplicar e integrar os conhecimentos teóricos aprendidos nas diferentes disciplinas na resolução de problemas práticos. Criar soluções para novos problemas e analisar os tradeoffs associados a soluções alternativas
+12;C.2.1;Determinar os requisitos de desempenho e confiabilidade, projeto, implementação e teste de componentes eletrônicos e sistemas em hardware
+13;C.2.2;Especificar e validar os requisitos, projetar, implementar, verificar, implantar e documentar soluções de software baseadas no conhecimento apropriado de teorias, modelos e técnicas
+14;C.2.3;Conhecer técnicas, arquiteturas e ferramentas para a seleção e integração otimizada de recursos de hardware e software. Para construção desta capacidade, são necessários conhecimentos em: sistemas operacionais, sistemas paralelos e distribuídos, programação de periféricos, sistemas em tempo real e sistemas embarcados
+15;C.2.4;Realizar o projeto de sistemas integrados de hardware e software para diversas áreas da indústria eletro-eletrônica. Esta capacitação envolve o conhecimento de áreas relacionadas a telecomunicações, redes de computadores, tratamento digital de sinais (para aplicações de tratamento de imagens, vídeo e áudio), e projeto de Controle e Automação de processos. A definição do currículo pode optar por uma ou mais destas áreas profissionalizantes, conforme demandas da indústria
+16;C.3.1;Compreender conceitos relevantes sobre projetos, serviços e experimentos de engenharia na área de computação
+17;C.3.2;Compreender as estruturas organizacionais e os papéis relacionados ao desenvolvimento de projetos, serviços e experimentos de Engenharia de Computação
+18;C.3.3;Identificar normas e documentações técnicas necessárias em projetos, serviços e experimentos de Engenharia de Computação
+19;C.3.4;Aplicar metodologias de gestão de projetos, serviços e experimentos de engenharia na área de computação
+20;C.4.1;Entender a relação entre teoria e prática
+21;C.4.2;Entender processos e questões relativos ao desenvolvimento de produto e sua manufatura
+22;C.4.3;Aplicar os fundamentos da economia na análise e no desenvolvimento de projetos de Engenharia de Computação, realizando estudos de viabilidade técnicoeconômica, considerando o contexto social
+23;C.4.4;Integrar conceitos de áreas diferentes em um sistema completo para prover uma solução
+24;C.4.5;Aplicar fundamentos da administração na análise e no desenvolvimento de projetos de Engenharia de Computação
+25;C.4.6;Empreender e exercer liderança na sua área de atuação profissional
+26;C.5.1;Conhecer os direitos e propriedades intelectuais inerentes à produção e à utilização de sistemas de computação
+27;C.5.2;Compreender a importância da conduta ética e cidadã no exercício da Engenharia de Computação
+28;C.5.3;Compreender o impacto que as soluções de sistemas de computação podem causar na sociedade e no meio ambiente
