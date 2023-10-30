@@ -1,0 +1,94 @@
+id;tipo;nome
+1;SBC_Conteudo;Técnicas de programação
+2;SBC_Conteudo;Estruturas de dados
+3;SBC_Conteudo;Paradigmas e padrões de programação
+4;SBC_Conteudo;Custo computacional e complexidade de algoritmos
+5;SBC_Conteudo;Linguagens formais e autômatos
+6;SBC_Conteudo;Lógica básica
+7;SBC_Conteudo;Indução
+8;SBC_Conteudo;Representação de código e dados
+9;SBC_Conteudo;Custo computacional
+10;SBC_Conteudo;Compilação, ligação, carga, interpretação
+11;SBC_Conteudo;Sistemas operacionais
+12;SBC_Conteudo;Requisitos de sistemas
+13;SBC_Conteudo;Modelos de análise de desempenho
+14;SBC_Conteudo;Simulação
+15;SBC_Conteudo;Cálculo numérico
+16;SBC_Conteudo;Métodos de matemática aplicada
+17;SBC_Conteudo;Provas matemáticas
+18;SBC_Conteudo;Probabilidade e estatística
+19;SBC_Conteudo;Matemática discreta
+20;SBC_Conteudo;Eletricidade e magnetismo
+21;SBC_Conteudo;Transferência de calor
+22;SBC_Conteudo;Análise de circuitos elétricos
+23;SBC_Conteudo;Eletrônica digital
+24;SBC_Conteudo;Eletrônica geral
+25;SBC_Conteudo;Laboratório de programação
+26;SBC_Conteudo;Oficina de integração
+27;SBC_Conteudo;Estágio integrado
+28;SBC_Conteudo;Trabalho de conclusão de curso
+29;SBC_Conteudo;Circuitos e sistemas digitais
+30;SBC_Conteudo;Arquitetura e organização de computadores
+31;SBC_Conteudo;Circuitos elétricos
+32;SBC_Conteudo;Microprocessadores
+33;SBC_Conteudo;Eletrônica analógica
+34;SBC_Conteudo;Microeletrônica
+35;SBC_Conteudo;Técnicas de projeto para redes de computadores
+36;SBC_Conteudo;Conhecimentos básicos de ciência da computação
+37;SBC_Conteudo;Lógica para computação
+38;SBC_Conteudo;Algoritmos e estrutura de dados
+39;SBC_Conteudo;Programação orientada a objetos
+40;SBC_Conteudo;Engenharia de software
+41;SBC_Conteudo;Confiabilidade e segurança de software
+42;SBC_Conteudo;Programação paralela e distribuída
+43;SBC_Conteudo;Programação de software básico
+44;SBC_Conteudo;Periféricos
+45;SBC_Conteudo;Compiladores
+46;SBC_Conteudo;Sistemas operacionais
+47;SBC_Conteudo;Técnicas para sistemas de tempo real
+48;SBC_Conteudo;Implementação de sistemas embarcados
+49;SBC_Conteudo;Sistemas de telecomunicação
+50;SBC_Conteudo;Técnicas de tratamento digital de sinais
+51;SBC_Conteudo;Projetos integrados para Controle de processos e automação Industrial
+52;SBC_Conteudo;Desenvolvimento de circuitos integrados
+53;SBC_Conteudo;Projetos, programas, serviços e experimentos de engenharia
+54;SBC_Conteudo;Portfólios e operações
+55;SBC_Conteudo;Erros comuns em projetos de software e hardware
+56;SBC_Conteudo;Motivos de fracasso de projetos de software e hardware
+57;SBC_Conteudo;Riscos envolvidos no projeto de sistemas de software e hardware
+58;SBC_Conteudo;Papel das organizações regulamentadoras
+59;SBC_Conteudo;Modelos de referência
+60;SBC_Conteudo;Certificações
+61;SBC_Conteudo;Estruturas organizacionais para o gerenciamento de projetos, serviços e experimentos
+62;SBC_Conteudo;Papéis e comportamentos de uma equipe de trabalho
+63;SBC_Conteudo;Papel do gerente de projetos, bem como suas atribuições e responsabilidades
+64;SBC_Conteudo;Documentação técnica em projetos de Hardware e Software
+65;SBC_Conteudo;Normas e modelos internacionais em projetos, serviços e experimentos
+66;SBC_Conteudo;Ciclo de gerenciamento de projetos, serviços e experimentos
+67;SBC_Conteudo;Ciclo de vida de produtos de software e hardware
+68;SBC_Conteudo;Técnicas para Especificação de Requisitos
+69;SBC_Conteudo;Modelos de termo de abertura
+70;SBC_Conteudo;Gerenciamento do andamento de projetos
+71;SBC_Conteudo;Elaboração de documentações
+72;SBC_Conteudo;Termo de encerramento
+73;SBC_Conteudo;Definição de objetivos e estratégia de um portfólio de projetos
+74;SBC_Conteudo;Dependência entre projetos
+75;SBC_Conteudo;Contribuição de um projeto ao portfólio
+76;SBC_Conteudo;Ferramentas para gestão de projetos
+77;SBC_Conteudo;Atividades na Gestão de Portfólio de Projetos
+78;SBC_Conteudo;Prática de implementação de circuitos
+79;SBC_Conteudo;Ferramentas de simulação
+80;SBC_Conteudo;Metodologia científica
+81;SBC_Conteudo;Técnicas para desenvolvimento de produtos
+82;SBC_Conteudo;Estudo de casos
+83;SBC_Conteudo;Estágio em empresas que desenvolvem produtos
+84;SBC_Conteudo;Conceitos, objetivos, princípios e funções de economia
+85;SBC_Conteudo;Estudo de viabilidade técnico-econômica
+86;SBC_Conteudo;Projetos multidisciplinares
+87;SBC_Conteudo;Conceitos, objetivos, princípios e funções de administração
+88;SBC_Conteudo;Conceitos de empreendedorismo
+89;SBC_Conteudo;Planejamento estratégico
+90;SBC_Conteudo;Políticas públicas e de órgãos e instituições de apoio ao empreendedorismo e inovação
+91;SBC_Conteudo;Legislação Aplicada à Informática
+92;SBC_Conteudo;Ética e Cidadania
+93;SBC_Conteudo;Engenharia Ambiental / Tecnologia e Meio Ambiente

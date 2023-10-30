@@ -1,0 +1,12 @@
+id;tipo;descricao
+1;SBC_CompetenciaEspecificaEgresso;Planejar, especificar, projetar, implementar, testar, verificar e validar sistemas de computação (sistemas digitais), incluindo computadores, sistemas baseados em microprocessadores, sistemas de comunicações e sistemas de automação, seguindo teorias, princípios, métodos, técnicas e procedimentos da Computação e da Engenharia
+2;SBC_CompetenciaEspecificaEgresso;Compreender, implementar e gerenciar a segurança de sistemas de computação
+3;SBC_CompetenciaEspecificaEgresso;Gerenciar projetos e manter sistemas de computação
+4;SBC_CompetenciaEspecificaEgresso;Conhecer os direitos e propriedades intelectuais inerentes à produção e à utilização de sistemas de computação
+5;SBC_CompetenciaEspecificaEgresso;Desenvolver processadores específicos, sistemas integrados e sistemas embarcados, incluindo o desenvolvimento de software para esses sistemas
+6;SBC_CompetenciaEspecificaEgresso;Analisar e avaliar arquiteturas de computadores, incluindo plataformas paralelas e distribuídas, como também desenvolver e otimizar software para elas
+7;SBC_CompetenciaEspecificaEgresso;Projetar e implementar software para sistemas de comunicação
+8;SBC_CompetenciaEspecificaEgresso;Analisar, avaliar e selecionar plataformas de hardware e software adequados para suporte de aplicação e sistemas embarcados de tempo real
+9;SBC_CompetenciaEspecificaEgresso;Analisar, avaliar, selecionar e configurar plataformas de hardware para o desenvolvimento e implementação de aplicações de software e serviços
+10;SBC_CompetenciaEspecificaEgresso;Projetar, implantar, administrar e gerenciar redes de computadores
+11;SBC_CompetenciaEspecificaEgresso;Realizar estudos de viabilidade técnico-econômica
