@@ -260,6 +260,19 @@ MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
 MERGE (componente:BNCC_Componente {id: line.idComponente})
 MERGE (componente)-[:PERTENCE]->(area)
 
+### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Habilidade ###
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (habilidade)-[:PERTENCE]->(area)
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (area)-[:POSSUI]->(habilidade)
 
 ## Matemática e suas Tecnologias ##
 
@@ -273,10 +286,23 @@ MERGE (habilidade)-[:PERTENCE]->(unidestudo)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Matematica-e-suas-Tecnologias/habilidade-mat-tecnologias-para-unid-estudo.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (habilidade:BNCC_Habilidade {id: line.idCodigoHabilidade})
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (unidestudo:BNCC_UnidadeDeEstudo {id: line.idUnidadeDeEstudo})
 MERGE (unidestudo)-[:POSSUI]->(habilidade)
 
+### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Habilidade ###
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (habilidade)-[:PERTENCE]->(area)
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (area)-[:POSSUI]->(habilidade)
 
 
 ## Ciencias da Natureza e suas Tecnologias ##
@@ -295,6 +321,20 @@ MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
 MERGE (componente:BNCC_Componente {id: line.idComponente})
 MERGE (componente)-[:PERTENCE]->(area)
 
+### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Habilidade ###
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (habilidade)-[:PERTENCE]->(area)
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (area)-[:POSSUI]->(habilidade)
+
 
 ## Ciencias Humanas e Sociais Aplicadas ##
 
@@ -311,3 +351,17 @@ FIELDTERMINATOR ';'
 MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
 MERGE (componente:BNCC_Componente {id: line.idComponente})
 MERGE (componente)-[:PERTENCE]->(area)
+
+### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Habilidade ###
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (habilidade)-[:PERTENCE]->(area)
+
+LOAD CSV WITH HEADERS FROM 'xxx' AS line
+FIELDTERMINATOR ';'
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
+MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
+MERGE (area)-[:POSSUI]->(habilidade)
