@@ -6,49 +6,43 @@ Guia para criação da base de dados
 
 ### Criação de nós do tipo SBC_Eixo ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/nodes/sbc-eixos.csv' as line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/nodes/sbc-eixos.csv' as line
 FIELDTERMINATOR ';'
-CREATE (:Eixo{id:line.id, tipo: line.tipo, nome: line.nome, competenciaGeral: line.competenciaGeral})
-
-MATCH (n {id:'1'}) SET n.eixo = 'Fudamentos de Sistemas de Computação' RETURN n
-MATCH (n {id:'2'}) SET n.eixo = 'Desenvolvimento de Sistemas Computacionais' RETURN n
-MATCH (n {id:'3'}) SET n.eixo = 'Gerenciamento de Sistemas Computacionais' RETURN n
-MATCH (n {id:'4'}) SET n.eixo = 'Inovação e Empreendedorismo' RETURN n
-MATCH (n {id:'5'}) SET n.eixo = 'Desenvolvimento Pessoal e Profissional' RETURN n
+CREATE (:SBC_Eixo{id:line.id, tipo: line.tipo, nome: line.nome, competenciaGeral: line.competenciaGeral})
 
 ### Criação de nós do tipo SBC_Conteudo ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/nodes/sbc-conteudos.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/nodes/sbc-conteudos.csv' AS line
 FIELDTERMINATOR ';'
-CREATE (:Conteudo{id:line.id, tipo: line.tipo, nome: line.nome})
+CREATE (:SBC_Conteudo{id:line.id, tipo: line.tipo, nome: line.nome})
 
 ### Criação de nós do tipo SBC_CompetenciaDerivada ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/nodes/sbc-competencias-derivadas.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/nodes/sbc-competencias-derivadas.csv' AS line
 FIELDTERMINATOR ';'
-CREATE (:CompetenciaDerivada{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao:line.descricao})
+CREATE (:SBC_CompetenciaDerivada{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao:line.descricao})
 
 ### Criação de nós do tipo SBC_CompetenciaGeralEgresso ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/nodes/sbc-competencias-gerais-egressos.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/nodes/sbc-competencias-gerais-egressos.csv' AS line
 FIELDTERMINATOR ';'
-CREATE (:CompetenciaGeralEgresso{id:line.id, tipo: line.tipo, descricao: line.descricao})
+CREATE (:SBC_CompetenciaGeralEgresso{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
 ### Criação de nós do tipo SBC_CompetenciaEspecificaEgresso ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/nodes/sbc-competencias-especificas-egressos.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/nodes/sbc-competencias-especificas-egressos.csv' AS line
 FIELDTERMINATOR ';'
-CREATE (:CompetenciaEspecificaEgresso{id:line.id, tipo: line.tipo, descricao: line.descricao})
+CREATE (:SBC_CompetenciaEspecificaEgresso{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
 
 ## CRIAÇÃO DOS RELACIONAMENTOS ENTRE OS NÓS ##
 
 ### Criação do relacionamento entre SBC_Conteudo e SBC_CompetenciaDerivada ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/conteudo-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/conteudo-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (cont:Conteudo {id: line.idConteudo})
-MERGE (comp:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (cont:SBC_Conteudo {id: line.idConteudo})
+MERGE (comp:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 
 FOREACH(ignoreMe IN CASE WHEN line.Classificacao = "APLICAR" THEN [1] ELSE [] END |
  MERGE (cont)-[:APLICAR]->(comp))
@@ -63,58 +57,58 @@ FOREACH(ignoreMe IN CASE WHEN line.Classificacao = "ANALISAR" THEN [1] ELSE [] E
 
 ### Criação do relacionamento entre SBC_Conteudo e SBC_Eixo ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/conteudo-para-eixo.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/conteudo-para-eixo.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (cont:Conteudo {id: line.idConteudo})
-MERGE (eixo:Eixo {id: line.idEixo})
+MERGE (cont:SBC_Conteudo {id: line.idConteudo})
+MERGE (eixo:SBC_Eixo {id: line.idEixo})
 MERGE (cont)-[:PERTENCE]->(eixo)
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/conteudo-para-eixo.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/conteudo-para-eixo.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (cont:Conteudo {id: line.idConteudo})
-MERGE (eixo:Eixo {id: line.idEixo})
+MERGE (cont:SBC_Conteudo {id: line.idConteudo})
+MERGE (eixo:SBC_Eixo {id: line.idEixo})
 MERGE (eixo)-[:POSSUI]->(cont)
 
 ### Criação do relacionamento entre SBC_Eixo e SBC_CompetenciaDerivada ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/eixo-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/eixo-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (eixo:Eixo {id: line.idEixo})
-MERGE (comp:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (eixo:SBC_Eixo {id: line.idEixo})
+MERGE (comp:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (comp)-[:PERTENCE]->(eixo)
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/eixo-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/eixo-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (eixo:Eixo {id: line.idEixo})
-MERGE (comp:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (eixo:SBC_Eixo {id: line.idEixo})
+MERGE (comp:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (eixo)-[:POSSUI]->(comp)
 
 ### Criação do relacionamento entre SBC_CompetenciaGeralEgresso e SBC_CompetenciaDerivada ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/competencia-geral-egressos-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/competencia-geral-egressos-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (compGeralEgresso:CompetenciaGeralEgresso {id: line.idCompetenciaGeralEgresso})
-MERGE (compDerivada:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (compGeralEgresso:SBC_CompetenciaGeralEgresso {id: line.idCompetenciaGeralEgresso})
+MERGE (compDerivada:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (compDerivada)-[:CONTRIBUI_PARA]->(compGeralEgresso)
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/competencia-geral-egressos-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/competencia-geral-egressos-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (compGeralEgresso:CompetenciaGeralEgresso {id: line.idCompetenciaGeralEgresso})
-MERGE (compDerivada:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (compGeralEgresso:SBC_CompetenciaGeralEgresso {id: line.idCompetenciaGeralEgresso})
+MERGE (compDerivada:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (compGeralEgresso)-[:OBTIDA_ATRAVES_DE]->(compDerivada)
 
 ### Criação do relacionamento entre SBC_CompetenciaEspecificaEgresso e SBC_CompetenciaDerivada ###
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/competencia-especifica-egressos-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/competencia-especifica-egressos-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (compEspecificaEgresso:CompetenciaEspecificaEgresso {id: line.idCompetenciaEspecificaEgresso})
-MERGE (compDerivada:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (compEspecificaEgresso:SBC_CompetenciaEspecificaEgresso {id: line.idCompetenciaEspecificaEgresso})
+MERGE (compDerivada:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (compDerivada)-[:CONTRIBUI_PARA]->(compEspecificaEgresso)
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computação/relacionamentos/competencia-especifica-egressos-para-competencia-derivada.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Sociedade-Brasileira-da-Computacao/relacionamentos/competencia-especifica-egressos-para-competencia-derivada.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (compEspecificaEgresso:CompetenciaEspecificaEgresso {id: line.idCompetenciaEspecificaEgresso})
-MERGE (compDerivada:CompetenciaDerivada {id: line.idCompetenciaDerivada})
+MERGE (compEspecificaEgresso:SBC_CompetenciaEspecificaEgresso {id: line.idCompetenciaEspecificaEgresso})
+MERGE (compDerivada:SBC_CompetenciaDerivada {id: line.idCompetenciaDerivada})
 MERGE (compEspecificaEgresso)-[:OBTIDA_ATRAVES_DE]->(compDerivada)
 
 
@@ -134,79 +128,87 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaGeral{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_CompetenciaEspecifica (Matemática e suas Tecnologias) ###
+## Matemática e suas Tecnologias ##
+
+### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-competencias-especificas-mat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Habilidade (Matemática e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Habilidade ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-habilidades-mat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_UnidadeDeEstudo (Matemática e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_UnidadeDeEstudo ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-unid-estudo-mat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_UnidadeDeEstudo{id:line.id, tipo: line.tipo, nome: line.nome})
 
-### Criação de nós do tipo BNCC_CompetenciaEspecifica (Linguagem e suas Tecnologias) ###
+## Linguagem e suas Tecnologias ##
+
+### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Linguagem-e-suas-Tecnologias/bncc-competencias-especificas-ling-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Habilidade (Linguagem e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Habilidade ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Linguagem-e-suas-Tecnologias/bncc-habilidades-ling-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Componente (Linguagem e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Componente ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Linguagem-e-suas-Tecnologias/bncc-componentes-ling-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Componente{id:line.id, tipo: line.tipo, nome: line.nome})
 
-### Criação de nós do tipo BNCC_HabilidadeDeComponente (Linguagem e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_HabilidadeDeComponente ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Linguagem-e-suas-Tecnologias/bncc-habilidades-compon-ling-portug.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_HabilidadeDeComponente{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_CompetenciaEspecifica (Ciências da Natureza e suas Tecnologias) ###
+## Ciências da Natureza e suas Tecnologias ##
+
+### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-da-Natureza-e-suas-Tecnologias/bncc-competencias-especificas-cien-nat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Habilidade (Ciências da Natureza e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Habilidade ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-da-Natureza-e-suas-Tecnologias/bncc-habilidades-cien-nat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Componente (Ciências da Natureza e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Componente ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-da-Natureza-e-suas-Tecnologias/bncc-componentes-cien-nat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Componente{id:line.id, tipo: line.tipo, nome: line.nome})
 
-### Criação de nós do tipo BNCC_CompetenciaEspecifica (Ciências Humanas e Sociais Aplicadas e suas Tecnologias) ###
+## Ciências Humanas e Sociais Aplicadas ##
+
+### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-Humanas-e-Sociais-Aplicadas/bncc-competencias-especificas-cien-hum-sociais.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Habilidade (Ciências Humanas e Sociais Aplicadas e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Habilidade ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-Humanas-e-Sociais-Aplicadas/bncc-habilidades-cien-hum-sociais.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
-### Criação de nós do tipo BNCC_Componente (Ciências Humanas e Sociais Aplicadas e suas Tecnologias) ###
+### Criação de nós do tipo BNCC_Componente ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-Humanas-e-Sociais-Aplicadas/bncc-componentes-cien-hum-sociais.csv' AS line
 FIELDTERMINATOR ';'
@@ -238,6 +240,12 @@ MERGE (habcomponente:BNCC_HabilidadeDeComponente {id: line.idHabilidadeDeCompone
 MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
 MERGE (habcomponente)-[:CONTRIBUI_PARA]->(compespecifica)
 
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/habilidade-comp-para-comp-especifica.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (habcomponente:BNCC_HabilidadeDeComponente {id: line.idHabilidadeDeComponente})
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compespecifica)-[:OBTIDA_ATRAVES_DE]->(habcomponente)
+
 ### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Componente ###
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/area-ling-tecnologias-para-componentes.csv' AS line
@@ -259,7 +267,7 @@ MERGE (componente)-[:PERTENCE]->(area)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Matematica-e-suas-Tecnologias/habilidade-mat-tecnologias-para-unid-estudo.csv' AS line
 FIELDTERMINATOR ';'
-MERGE (habilidade:BNCC_Habilidade {id: line.idCodigoHabilidade})
+MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (unidestudo:BNCC_UnidadeDeEstudo {id: line.idUnidadeDeEstudo})
 MERGE (habilidade)-[:PERTENCE]->(unidestudo)
 
