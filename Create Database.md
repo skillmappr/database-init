@@ -262,13 +262,13 @@ MERGE (componente)-[:PERTENCE]->(area)
 
 ### Criação do relacionamento entre BNCC_AreaDeConhecimento e BNCC_Habilidade ###
 
-LOAD CSV WITH HEADERS FROM 'xxx' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/area-ling-tecnologias-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
 MERGE (habilidade)-[:PERTENCE]->(area)
 
-LOAD CSV WITH HEADERS FROM 'xxx' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/area-ling-tecnologias-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (area:BNCC_AreaDeConhecimento {id: line.idAreaDeConhecimento})
