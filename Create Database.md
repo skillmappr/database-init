@@ -308,6 +308,20 @@ MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
 MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
 
+### Criação do relacionamento entre BNCC_CompetenciaEspecifica e BNCC_CompetenciaGeral ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compespecifica)-[:CONTRIBUI_PARA]->(compgeral)
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compgeral)-[:OBTIDA_ATRAVES_DE]->(compespecifica)
+
 
 ## Matemática e suas Tecnologias ##
 
@@ -366,6 +380,20 @@ FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
 MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+
+### Criação do relacionamento entre BNCC_CompetenciaEspecifica e BNCC_CompetenciaGeral ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Matematica-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compespecifica)-[:CONTRIBUI_PARA]->(compgeral)
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Matematica-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compgeral)-[:OBTIDA_ATRAVES_DE]->(compespecifica)
 
 
 ## Ciencias da Natureza e suas Tecnologias ##
@@ -426,6 +454,20 @@ MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
 MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
 
+### Criação do relacionamento entre BNCC_CompetenciaEspecifica e BNCC_CompetenciaGeral ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-da-Natureza-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compespecifica)-[:CONTRIBUI_PARA]->(compgeral)
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-da-Natureza-e-suas-Tecnologias/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compgeral)-[:OBTIDA_ATRAVES_DE]->(compespecifica)
+
 
 ## Ciencias Humanas e Sociais Aplicadas ##
 
@@ -484,3 +526,17 @@ FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
 MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+
+### Criação do relacionamento entre BNCC_CompetenciaEspecifica e BNCC_CompetenciaGeral ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-Humanas-e-Sociais-Aplicadas/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compespecifica)-[:CONTRIBUI_PARA]->(compgeral)
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-Humanas-e-Sociais-Aplicadas/compet-espec-para-compet-geral.csv' AS line
+FIELDTERMINATOR ';'
+MERGE (compespecifica:BNCC_CompetenciaEspecifica {id: line.idCompetenciaEspecifica})
+MERGE (compgeral:BNCC_CompetenciaGeral {id: line.idCompetenciaGeral})
+MERGE (compgeral)-[:OBTIDA_ATRAVES_DE]->(compespecifica)
