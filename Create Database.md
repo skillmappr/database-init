@@ -128,25 +128,6 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 CREATE (:BNCC_CompetenciaGeral{id:line.id, tipo: line.tipo, descricao: line.descricao})
 
-## Matemática e suas Tecnologias ##
-
-### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
-
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-competencias-especificas-mat-tecnologias.csv' AS line
-FIELDTERMINATOR ';'
-CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
-
-### Criação de nós do tipo BNCC_Habilidade ###
-
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-habilidades-mat-tecnologias.csv' AS line
-FIELDTERMINATOR ';'
-CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
-
-### Criação de nós do tipo BNCC_UnidadeDeEstudo ###
-
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-unid-estudo-mat-tecnologias.csv' AS line
-FIELDTERMINATOR ';'
-CREATE (:BNCC_UnidadeDeEstudo{id:line.id, tipo: line.tipo, nome: line.nome})
 
 ## Linguagem e suas Tecnologias ##
 
@@ -174,6 +155,28 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 CREATE (:BNCC_HabilidadeDeComponente{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
 
+
+## Matemática e suas Tecnologias ##
+
+### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-competencias-especificas-mat-tecnologias.csv' AS line
+FIELDTERMINATOR ';'
+CREATE (:BNCC_CompetenciaEspecifica{id:line.id, tipo: line.tipo, descricao: line.descricao})
+
+### Criação de nós do tipo BNCC_Habilidade ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-habilidades-mat-tecnologias.csv' AS line
+FIELDTERMINATOR ';'
+CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descricao: line.descricao})
+
+### Criação de nós do tipo BNCC_UnidadeDeEstudo ###
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Matematica-e-suas-Tecnologias/bncc-unid-estudo-mat-tecnologias.csv' AS line
+FIELDTERMINATOR ';'
+CREATE (:BNCC_UnidadeDeEstudo{id:line.id, tipo: line.tipo, nome: line.nome})
+
+
 ## Ciências da Natureza e suas Tecnologias ##
 
 ### Criação de nós do tipo BNCC_CompetenciaEspecifica ###
@@ -193,6 +196,7 @@ CREATE (:BNCC_Habilidade{id:line.id, tipo: line.tipo, codigo: line.codigo, descr
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/nodes/Ciencias-da-Natureza-e-suas-Tecnologias/bncc-componentes-cien-nat-tecnologias.csv' AS line
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Componente{id:line.id, tipo: line.tipo, nome: line.nome})
+
 
 ## Ciências Humanas e Sociais Aplicadas ##
 
@@ -214,7 +218,9 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 CREATE (:BNCC_Componente{id:line.id, tipo: line.tipo, nome: line.nome})
 
+
 ## CRIAÇÃO DOS RELACIONAMENTOS ##
+
 
 ## Linguagem e suas Tecnologias ##
 
@@ -294,13 +300,13 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (habilidade)-[:CONTRIBUI_PARA]->(area)
+MERGE (habilidade)-[:CONTRIBUI_PARA]->(competencia)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Linguagem-e-suas-Tecnologias/compet-espec-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (area)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
 
 
 ## Matemática e suas Tecnologias ##
@@ -353,13 +359,13 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (habilidade)-[:CONTRIBUI_PARA]->(area)
+MERGE (habilidade)-[:CONTRIBUI_PARA]->(competencia)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Matematica-e-suas-Tecnologias/compet-espec-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (area)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
 
 
 ## Ciencias da Natureza e suas Tecnologias ##
@@ -412,13 +418,13 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (habilidade)-[:CONTRIBUI_PARA]->(area)
+MERGE (habilidade)-[:CONTRIBUI_PARA]->(competencia)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-da-Natureza-e-suas-Tecnologias/compet-espec-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (area)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
 
 
 ## Ciencias Humanas e Sociais Aplicadas ##
@@ -471,10 +477,10 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/databas
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (habilidade)-[:CONTRIBUI_PARA]->(area)
+MERGE (habilidade)-[:CONTRIBUI_PARA]->(competencia)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/skillmappr/database-init/main/Base-Nacional-Comum-Curricular/relacionamentos/Ciencias-Humanas-e-Sociais-Aplicadas/compet-espec-para-habilidades.csv' AS line
 FIELDTERMINATOR ';'
 MERGE (habilidade:BNCC_Habilidade {codigo: line.codigoHabilidade})
 MERGE (competencia:BNCC_CompetenciaEspecifica {id: line.idCompetencia})
-MERGE (area)-[:OBTIDA_ATRAVES_DE]->(habilidade)
+MERGE (competencia)-[:OBTIDA_ATRAVES_DE]->(habilidade)
